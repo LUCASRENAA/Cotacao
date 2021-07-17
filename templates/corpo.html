@@ -1,0 +1,77 @@
+
+
+<div class="container py-3">
+  <header>
+    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+        <span class="fs-4">Cotação</span>
+      </a>
+
+      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+        <a class="me-3 py-2 text-dark text-decoration-none" href="#">Home</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="#">Cotações</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="#">Usuários</a>
+      </nav>
+    </div>
+
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+      <h1 class="display-4 fw-normal">Cotação</h1>
+      <p class="fs-5 text-muted">Veja a cotação de sua moeda favorita, compare preços e veja diferença de valores, tudo isso no mesmo lugar.</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">Preços e variações</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">Libra</h1>
+            <p class="card-text">R${{ valorLibra }} </p>
+            </ul>
+            <button type="button" class="w-100 btn btn-lg btn-outline-primary">Detalhes</button>
+          </div>
+        </div>
+      </div>
+    <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">Preços e variações</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">Euro</h1>
+            <p class="card-text">R${{ valorEuro }}</p>
+            </ul>
+            <button type="button" class="w-100 btn btn-lg btn-outline-primary">Mais Detalhes</button>
+          </div>
+        </div>
+    </div>
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">Preços e variações</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">Dolar</h1>
+              <p>R${{ valorDollar }}</p>
+            <button type="button" class="w-100 btn btn-lg btn-outline-primary">Mais detalhes</button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="card mb-4 rounded-3 shadow-sm border-primary">
+          <div class="card-header py-3 text-white bg-primary border-primary">
+            <h4 class="my-0 fw-normal">Usuários Online</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">Usuários ativos</h1>
+            <p>{{ quantidadeUsuariosOnline }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
