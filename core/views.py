@@ -22,6 +22,7 @@ import time
 # Create your views here
 #from core.models import Produto
 from online_users.models import OnlineUserActivity
+from pycotacao import get_exchange_rates, CurrencyCodes
 
 
 def login_user(request):
@@ -84,8 +85,16 @@ def inicio(request):
 @login_required(login_url='/login/')
 def Euro(request):
     number_of_active_users = quantidadeOnline()
-    dados = {"quantidadeUsuariosOnline":str(number_of_active_users)}
-    return render(request,'inicio.html',dados)
+    valorDollar = conseguirValorDollar()
+    valorEuro = conseguirValorEuro()
+    valorLibra = conseguirValorLibra()
+    dados = {
+        "quantidadeUsuariosOnline": str(number_of_active_users),
+        "valorDollar": str(valorDollar),
+        "valorEuro": str(valorEuro),
+        "valorLibra": str(valorLibra),
+    }
+    return render(request,'Euro.html',dados)
 
 '''
 codigo comentado blab
@@ -98,3 +107,15 @@ def quantidadeOnline():
     user_activity_objects = OnlineUserActivity.get_user_activities()
     number_of_active_users = user_activity_objects.count()
     return number_of_active_users
+
+
+def conseguirValorDollar():
+    return get_exchange_rates(CurrencyCodes.USD).selling_rate
+
+
+def conseguirValorEuro():
+    return get_exchange_rates(CurrencyCodes.EUR).selling_rate
+
+
+def conseguirValorLibra():
+    return get_exchange_rates(CurrencyCodes.GBP).selling_rate
