@@ -96,6 +96,20 @@ def Euro(request):
     }
     return render(request,'Euro.html',dados)
 
+@login_required(login_url='/login/')
+def Conversor(request):
+    number_of_active_users = quantidadeOnline()
+    valorDollar = conseguirValorDollar()
+    valorEuro = conseguirValorEuro()
+    valorLibra = conseguirValorLibra()
+    dados = {
+        "quantidadeUsuariosOnline": str(number_of_active_users),
+        "valorDollar": str(valorDollar),
+        "valorEuro": str(valorEuro),
+        "valorLibra": str(valorLibra),
+    }
+    return render(request,'Conversor.html',dados)
+
 '''
 codigo comentado blab
 alba

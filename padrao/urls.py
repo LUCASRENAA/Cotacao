@@ -26,6 +26,8 @@ urlpatterns = [
     path('inicio/',views.inicio),
     path('inicio/Euro', views.Euro),
 
+    path('inicio/Conversor', views.Conversor),
+
     path('login/', views.login_user),
     path('login/submit',views.submit_login),
     path('',RedirectView.as_view(url='inicio/'))
