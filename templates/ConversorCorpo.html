@@ -1,0 +1,64 @@
+
+<div class="container py-3">
+    {% include "header.html" %}
+    <main class="d-flex flex-column align-items-center align-content-center justify-content-center" >
+        <h1>Conversor de moedas</h1>
+        <div class="d-flex flex-row">
+            <input type="text" id="Quantia" class="p-1 mx-1 border-0 border-0-focus border-bottom" placeholder="Insira sua quantia aqui">
+            <select name="moedas" id="opcoes" class="p-1 mx-1 border-0 border-bottom">
+                <option value="">...</option>
+                <option value="Dolar">Dolar</option>
+                <option value="Euro">Euro</option>
+                <option value="Libra">Libra</option>
+            </select>
+            <button id="enviar" class="p-1 mx-1 bg-primary text-white border-0">
+                gerar
+            </button>
+        </div>
+        <div id="saida" class="p-2 my-1"></div>
+
+    </main>
+</div>
+
+<script>
+    const opcoesDeSaida = document.querySelector('#opcoes')
+    const btnEnviar = document.querySelector('#enviar')
+    const inputQuantia = document.querySelector('#Quantia')
+    const saidaDiv = document.querySelector('#saida')
+
+    btnEnviar.addEventListener('click', transformarQuantidade);
+
+    function mostrarValor(number, isCorrect){
+        if(isCorrect){
+            saidaDiv.innerHTML = `<p> ${number} </p>`
+        }
+        else{
+            saidaDiv.innerHTML = `<p class="bg-danger text-white"> entrada incorreta, por favor digitar novamente </p>`
+        }
+    }
+
+    function transformarQuantidade(){
+        const moeda = opcoes.value;
+        let valor = parseFloat(inputQuantia.value);
+        let valorFinal = 0;
+        let isCorrect = true;
+
+        if(!isNaN(valor)){
+            if(moeda === 'Dolar'){
+            valorFinal = valor * parseFloat('{{ valorDollar }}')
+            } else if(moeda === 'Euro'){
+                valorFinal = valor * parseFloat('{{ valorEuro }}')
+            } else if(moeda === 'Libra'){
+                valorFinal = valor * parseFloat('{{ valorLibra }}')
+            } else {
+                isCorrect = false;
+            }
+        } else {
+            isCorrect = false;
+        }
+
+        mostrarValor(valorFinal, isCorrect)
+    }
+
+</script>
+
